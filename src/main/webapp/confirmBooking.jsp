@@ -14,12 +14,10 @@
     PreparedStatement holdSeatStmt = null;
 
     try {
-        // Establish connection
         String jdbcURL = "jdbc:mysql://localhost:3306/cinematicketbooking";
         Class.forName("com.mysql.cj.jdbc.Driver");
         conn = DriverManager.getConnection(jdbcURL);
 
-        // Start transaction
         conn.setAutoCommit(false);
 
         // Change seats to 'TENTATIVE'
