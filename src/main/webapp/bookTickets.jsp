@@ -5,7 +5,6 @@
 <%@ page import="java.util.*" %>
 
 <%!
-    // Helper function to get connection
     public Connection getConnection() throws Exception {
         String jdbcURL = "jdbc:mysql://localhost:3306/cinematicketbooking";
 
@@ -22,7 +21,6 @@
     try {
         Connection connection = getConnection();
 
-        // Fetch all movies for selection
         String allMoviesQuery = "SELECT * FROM movies";
         PreparedStatement allMoviesStmt = connection.prepareStatement(allMoviesQuery);
         ResultSet allMoviesRs = allMoviesStmt.executeQuery();
@@ -33,7 +31,7 @@
             movie.put("title", allMoviesRs.getString("title"));
             movies.add(movie);
 
-            // If this is the selected movie, save its details
+
             if (movie_id != null && movie_id.equals(allMoviesRs.getString("movie_id"))) {
                 selectedMovie = new HashMap<>();
                 selectedMovie.put("movie_id", allMoviesRs.getString("movie_id"));
@@ -49,7 +47,6 @@
         out.println("<p>Error: " + e.getMessage() + "</p>");
     }
 
-    // Generate the next 5 days for date selection
     List<String> nextFiveDays = new ArrayList<>();
     LocalDate today = LocalDate.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -99,7 +96,7 @@
         function updateSeatSelection(seatId) {
             const seatDiv = document.getElementById(`seat_${seatId}`);
             if (seatDiv.classList.contains("booked")) {
-                return; // Ignore clicks on booked seats
+                return;
             }
 
             if (selectedSeats.includes(seatId)) {
@@ -188,7 +185,6 @@
                     int seatColumn = rs.getInt("seat_column");
                     boolean isBooked = rs.getBoolean("is_booked");
 
-                    // Generate a seat box dynamically
         %>
         <div
                 id="seat_<%= seatId %>"

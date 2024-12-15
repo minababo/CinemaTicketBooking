@@ -41,13 +41,11 @@
 <h1 style="margin-left: 50px; margin-top:50px; color: #cccccc">Now Showing Movies</h1><br>
 <!-- Now Showing Section -->
 <section id="now-showing" style="padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-    <!-- Forward request to NowShowingServlet -->
     <jsp:include page="moviesection.jsp" />
 </section>
 <h1 style="margin-left: 50px; margin-top:10px; color: #cccccc">Upcoming Movies</h1><br>
 <!-- Upcoming Movies Section -->
 <section id="upcoming-movies" style="padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-    <!-- Include the dynamic upcoming movies section JSP -->
     <jsp:include page="upcomingsection.jsp" />
 </section>
 </body>
