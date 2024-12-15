@@ -1,0 +1,26 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+  <!-- Application Display Name -->
+  <display-name>Archetype Created Web Application</display-name>
+
+  <!-- AddNowShowingServlet and AddUpcomingServlet Configuration -->
+  <servlet>
+    <servlet-name>AddNowShowingServlet</servlet-name>
+    <servlet-class>main.webapp.admin.servlets.AddNowShowingServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddUpcomingServlet</servlet-name>
+    <servlet-class>main.webapp.admin.servlets.AddUpcomingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddNowShowingServlet</servlet-name>
+    <url-pattern>/AddNowShowingServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddUpcomingServlet</servlet-name>
+    <url-pattern>/AddUpcomingServlet</url-pattern>
+  </servlet-mapping>
+</web-app>
