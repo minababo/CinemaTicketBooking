@@ -16,7 +16,7 @@ public class DatabaseConnection {
     }
 
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        return DriverManager.getConnection(URL);
     }
 
     public static void closeConnection(Connection conn) {
