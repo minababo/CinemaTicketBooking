@@ -34,19 +34,79 @@
     out.println("<p>Error: " + e.getMessage() + "</p>");
   }
 %>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upcoming Movies</title>
+  <style>
+    .movie-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 500px);
+      gap: 20px;
+      transform: translateY(-30px);
+      padding: 20px;
+      justify-content: start;
+      margin-left: 5px;
+      align-items: center;
+    }
+
+    .movie-card {
+      border: 1px solid #2d3138;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 500px;
+      height: 390px;
+      background-color: #0e1116;
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .movie-card .info {
+      padding: 10px 15px;
+      transform: translateY(-10px);
+    }
+
+    .buy-tickets, .watch-trailer {
+      padding: 10px 20px;
+      margin: 5px;
+      text-decoration: none;
+      border-radius: 5px;
+      color: #fff;
+    }
+
+    .buy-tickets {
+      background-color: #007BFF;
+    }
+
+    .watch-trailer {
+      background-color: #28a745;
+    }
+  </style>
+</head>
+<body>
 <!-- Render Upcoming Movies -->
 <div class="movie-cards">
   <% for (Map<String, String> movie : upcomingMovies) { %>
-  <div class="movie-card" style="border: 1px solid #ccc; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin: 0 auto; max-width: 250px;">
-    <img src="<%= movie.get("image_url") %>" alt="<%= movie.get("title") %>" style="width: 100%; height: auto;">
+  <div class="movie-card">
+    <img src="<%= movie.get("image_url") %>" alt="<%= movie.get("title") %>">
     <div class="info" style="padding: 15px;">
       <h3><%= movie.get("title") %></h3>
       <p><%= movie.get("description") %></p>
-      <p><strong>Release Date:</strong> <%= movie.get("release_date") %></p>
-      <% if (movie.get("trailer_url") != null && !movie.get("trailer_url").isEmpty()) { %>
-      <a href="<%= movie.get("trailer_url") %>" target="_blank" style="color: #007BFF; text-decoration: none;">Watch Trailer</a>
-      <% } %>
+      <p style="display: flex; align-items: center; justify-content: space-between;">
+        <span><strong>Release Date:</strong> <%= movie.get("release_date") %></span>
+        <% if (movie.get("trailer_url") != null && !movie.get("trailer_url").isEmpty()) { %>
+        <a href="<%= movie.get("trailer_url") %>" target="_blank" style="padding: 10px 20px; background-color: #286504; color: white; text-decoration: none; border-radius: 5px;">Watch Trailer</a>
+        <% } %>
+      </p>
     </div>
   </div>
   <% } %>
 </div>
+</body>
+</html>

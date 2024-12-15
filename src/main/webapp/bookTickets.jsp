@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.time.*" %>
 <%@ page import="java.time.format.*" %>
@@ -60,24 +61,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Book Tickets</title>
+    <title>Home - ABC Cinemas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .movie-box {
-            display: inline-block;
-            padding: 20px;
-            margin: 10px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            text-align: center;
-            cursor: pointer;
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body { font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #010409;
+            color: #cccccc;
+            .movie-box
+        {
+                display: inline-block;
+                padding: 10px;
+                margin: 8px;
+                background-color: #f0f0f0;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                text-align: center;
+                cursor: pointer;
         }
-        .movie-box:hover {
-            background-color: #ddd;
+            .movie-box:hover {
+                background-color: #ddd;
+                color: #0070ff;
+            }
+            .selected {
+                border: 2px solid #0070ff;
+                background-color: #0070ff;
+            }
         }
-        .selected {
-            border: 2px solid #0070ff;
-        }
+        main { padding: 20px; text-align: center; }
     </style>
     <script>
         let selectedSeats = [];
@@ -113,6 +127,12 @@
     </script>
 </head>
 <body>
+<!-- Navbar -->
+<section id="navbar" style="padding: 0">
+<%@ include file="./navbar.jsp"%>
+</section>
+<!-- Page Content -->
+<div class="container" style="text-align: center">
 <h1>Book Your Tickets</h1>
 
 <!-- Movie Box Selection -->
@@ -156,11 +176,10 @@
     <div class="seat-grid" id="seatGrid">
         <%
             try {
-                // Database connection
                 Connection connection = getConnection();
                 String query = "SELECT * FROM seats WHERE movie_id = ? ORDER BY seat_row, seat_column";
                 PreparedStatement stmt = connection.prepareStatement(query);
-                stmt.setString(1, movie_id); // Use the selected movie ID
+                stmt.setString(1, movie_id);
                 ResultSet rs = stmt.executeQuery();
 
                 while (rs.next()) {
@@ -182,7 +201,6 @@
             stmt.close();
             connection.close();
         } catch (Exception e) {
-            // Print an error message for debugging
             out.println("<p>Error: " + e.getMessage() + "</p>");
         }
         %>
@@ -195,5 +213,7 @@
     <input type="hidden" name="date">
     <button type="submit">Confirm Booking</button>
 </form>
+</div>
 </body>
+
 </html>

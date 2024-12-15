@@ -3,7 +3,7 @@
 
 
 <%
-    // Database Connectivity
+
     List<Map<String, String>> movies = new ArrayList<>();
     try {
         String jdbcURL = "jdbc:mysql://localhost:3306/cinematicketbooking";
@@ -37,7 +37,6 @@
 <head>
     <title>Now Showing</title>
     <style>
-        /* Card styling to improve UI */
         .movie-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, 500px);
@@ -50,17 +49,18 @@
         }
 
         .movie-card {
-            border: 1px solid #ccc;
+            border: 1px solid #2d3138;
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             width: 500px;
-            height: 370px;
+            height: 390px;
+            background-color: #0e1116;
         }
 
         .movie-card img {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
         }
 
@@ -84,9 +84,6 @@
         .watch-trailer {
             background-color: #28a745;
         }
-        .h3 {
-            color: #fff;
-        }
     </style>
 </head>
 <body>
@@ -97,7 +94,7 @@
         <img src="<%= movie.get("image_url") %>" alt="<%= movie.get("title") %>">
         <div class="info">
             <h3><%= movie.get("title") %></h3>
-            <p><%= movie.get("description") %></p>
+            <p><%= movie.get("description") %></p><br>
             <a href="bookTickets.jsp?movie_id=<%= movie.get("movie_id") %>" class="book-tickets-btn" style="padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px;">Book Tickets</a>
             <% if (movie.get("trailer_url") != null && !movie.get("trailer_url").isEmpty()) { %>
             <a href="<%= movie.get("trailer_url") %>" class="watch-trailer-btn" style="padding: 10px 20px; background-color: #286504; color: white; text-decoration: none; border-radius: 5px;" target="_blank">Watch Trailer</a>

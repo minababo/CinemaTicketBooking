@@ -5,7 +5,9 @@
     <title>Home - ABC Cinemas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: #010409; color: #cccccc }
         main { padding: 20px; text-align: center; }
         #carousel .slides {
             display: flex;
@@ -28,21 +30,21 @@
         <img src="./images/3.jpg" alt="Slide 3" style="width: 100%; flex-shrink: 0; object-fit: cover; height: 100%;">
     </div>
     <div id="navigation-buttons" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px;">
-        <button class="nav-btn" data-slide="0" style="width: 40px; height: 15px; background: #fff; border: 1px solid #ccc; border-radius: 20px; cursor: pointer;"></button>
-        <button class="nav-btn" data-slide="1" style="width: 40px; height: 15px; background: #fff; border: 1px solid #ccc; border-radius: 20px; cursor: pointer;"></button>
-        <button class="nav-btn" data-slide="2" style="width: 40px; height: 15px; background: #fff; border: 1px solid #ccc; border-radius: 20px; cursor: pointer;"></button>
+<button class="nav-btn" data-slide="0" style="width: 40px; height: 10px; background: #ccc; border: 1px solid #ccc; border-radius: 20px; cursor: pointer;"></button>
+<button class="nav-btn" data-slide="1" style="width: 40px; height: 10px; background: #ccc; border: 1px solid #ccc; border-radius: 20px; cursor: pointer;"></button>
+<button class="nav-btn" data-slide="2" style="width: 40px; height: 10px; background: #fff; border: 1px solid #ccc; border-radius: 20px; cursor: pointer;"></button>
     </div>
     <button id="prev" style="position: absolute; top: 0; left: 10px; height: 100%; background: rgba(255,255,255,0); border: 30px solid rgba(204,204,204,0); border-radius: 3px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 40px; color: #fff;">&#10094;</button>
     <button id="next" style="position: absolute; top: 0; right: 10px; height: 100%; background: rgba(255,255,255,0); border: 30px solid rgba(204,204,204,0); border-radius: 3px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 40px; color: #fff;">&#10095;</button>
 </div>
 <!-- Now Showing Movies -->
-<h1 style="font-family: Arial, sans-serif; margin-left: 50px; margin-top:50px">Now Showing</h1><br>
+<h1 style="margin-left: 50px; margin-top:50px; color: #cccccc">Now Showing Movies</h1><br>
 <!-- Now Showing Section -->
 <section id="now-showing" style="padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
     <!-- Forward request to NowShowingServlet -->
     <jsp:include page="moviesection.jsp" />
 </section>
-<h1 style="font-family: Arial, sans-serif; margin-left: 50px; margin-top:50px">Upcoming Movies</h1><br>
+<h1 style="margin-left: 50px; margin-top:10px; color: #cccccc">Upcoming Movies</h1><br>
 <!-- Upcoming Movies Section -->
 <section id="upcoming-movies" style="padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
     <!-- Include the dynamic upcoming movies section JSP -->
@@ -73,7 +75,7 @@
 
     function updateNavButtons() {
         navButtons.forEach((btn, index) => {
-            btn.style.background = (index === slideIndex) ? "#3f3f3f" : "#fff";
+            btn.style.background = (index === slideIndex) ? "#707070" : "#cccccc";
         });
     }
 
