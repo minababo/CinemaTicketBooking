@@ -13,7 +13,6 @@
 <!-- Navbar -->
 <%@ include file="./navbar.jsp"%>
 
-<!-- Page Content -->
 <main>
     <h1>Contact Us</h1>
     <p>Feel free to reach out to us at <a href="mailto:contact@abccinemas.com">contact@abccinemas.com</a></p>
