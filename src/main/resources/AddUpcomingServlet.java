@@ -15,13 +15,11 @@ public class AddUpcomingServlet extends HttpServlet {
         String title = request.getParameter("title");
         String description = request.getParameter("description");
         String imageUrl = request.getParameter("image_url");
-        String releaseDate = request.getParameter("release_date"); // Ensure the date format matches your DB schema
+        String releaseDate = request.getParameter("release_date"); 
 
         try {
-            // Database connection details
             String jdbcURL = "jdbc:mysql://localhost:3306/cinematicketbooking";
 
-            // Establish connection
             Connection connection = DriverManager.getConnection(jdbcURL);
 
             // Prepare the SQL statement
@@ -30,12 +28,11 @@ public class AddUpcomingServlet extends HttpServlet {
             statement.setString(1, title);
             statement.setString(2, description);
             statement.setString(3, imageUrl);
-            statement.setString(4, releaseDate); // Ensure the date format is "YYYY-MM-DD"
+            statement.setString(4, releaseDate); 
 
             // Execute the update
             int rowsInserted = statement.executeUpdate();
 
-            // Close resources
             statement.close();
             connection.close();
 
@@ -43,12 +40,12 @@ public class AddUpcomingServlet extends HttpServlet {
                 // Redirect to success page or admin dashboard
                 response.sendRedirect("adminDashboard.jsp?success=Movie added successfully");
             } else {
-                response.sendRedirect("addUpcoming.jsp?error=Failed to add movie"); // Redirect back with error
+                response.sendRedirect("addUpcoming.jsp?error=Failed to add movie");
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("addUpcoming.jsp?error=An error occurred while adding the movie"); // Redirect to form
+            response.sendRedirect("addUpcoming.jsp?error=An error occurred while adding the movie");
         }
     }
 }
